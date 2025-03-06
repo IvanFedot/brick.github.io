@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+
+body {
+    font-family: "Unbounded", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: #141414;
+    color: white;
+    user-select: none;
+}
+
+body.scroll {
+    overflow: hidden;
+}
+
+.Intro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90vw;
+    height: 70vh;
+    background-color: #161616;
+    margin: 5vh;
+    font-size: 3vi;
+    border-radius: 5vi;
+    border: solid #6E2415;
+}
+
+.Contest {
+    display: block;
+    margin-left: 5vi;
+}
+
+canvas {
+    width: 58%;
+    height: 100%;
+    image-rendering: pixelated;
+    cursor: grab;
+}
+
+
+.IntroDown {
+    display: grid;
+    width: 90vw;
+    background-color: #161616;
+    height: 15vh;
+    border: solid #6E2415;
+    border-radius: 5vi;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: repeat(3, 30%);
+    gap: 5%;
+    grid-template-areas:
+    ". . B"
+    "A . C"
+    ". . D";
+}
+
+.Theme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-area: A;
+    font-size: 2vi;
+    margin-left: 5vi;
+}
+
+.Teacher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-area: B;
+    font-size: 1vi;
+}
+
+.Author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-area: C;
+    font-size: 0.9vi;
+}
+
+.School {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-area: D;
+    font-size: 0.8vi;
+}
+
+.Gradient {
+    width: 100%;
+    height: 10vi;
+    background: linear-gradient(180deg, #141414 10%, rgb(0, 0, 0) 100%);
+}
+
+.Basement {
+    display: grid;
+    grid-template-columns: 5% 20% 50% 20% 5%;
+    grid-template-rows: repeat(7, 1fr);
+    background-color: #000000;
+    width: 100%;
+    height: 60vi;
+    grid-template-areas:
+    ". A . . ."
+    ". . . B ."
+    ". C . . ."
+    ". . . D ."
+    ". E . . ."
+    ". . . F ."
+    ". S . . ."
+    ;
+}
+
+#OneBlock {
+    rotate: 5deg;
+    grid-area: A;
+}
+
+#TwoBlock {
+    rotate: -5deg;
+    grid-area: B;
+}
+
+#ThreeBlock {
+    rotate: 5deg;
+    grid-area: C;
+}
+
+#FourBlock {
+    rotate: -5deg;
+    grid-area: D;
+}
+
+#FiveBlock {
+    rotate: 5deg;
+    grid-area: E;
+}
+
+#SixBlock {
+    rotate: -5deg;
+    grid-area: F;
+}
+
+#SevenBlock {
+    rotate: 5deg;
+    grid-area: S;
+}
+
+.Box {
+    padding: 2vi;
+    text-align: center;
+    font-size: 1.4vi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15vi;
+    height: 1vi;
+    background-color: #161616;
+    border-radius: 5vi; 
+    border: solid #6E2415;
+    transition: 500ms ease;
+    filter: blur(0.3vi);
+}
+
+.Box:hover {
+    filter: blur(0vi);
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.End {
+    width: 100%;
+    height: 10vi;
+    background-color: #6E2415;
+}
+
+.PanelWindow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    opacity: 0;
+    visibility: hidden;
+    transition: 300ms ease;
+}
+
+.PanelWindow.visible {
+    opacity: 0;
+}
