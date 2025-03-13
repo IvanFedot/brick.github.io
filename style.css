@@ -11,6 +11,20 @@ body {
     user-select: none;
 }
 
+body::-webkit-scrollbar {
+    width: 0.8vi;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #181818;
+}
+
+body::-webkit-scrollbar-thumb {
+    border: solid #6E2415;
+    background-color: #161616;
+    border-radius: 1vi;
+}
+
 body.scroll {
     overflow: hidden;
 }
@@ -31,15 +45,14 @@ body.scroll {
 .Contest {
     display: block;
     margin-left: 5vi;
-}
-
-canvas {
-    width: 58%;
-    height: 100%;
     image-rendering: pixelated;
-    cursor: grab;
 }
 
+.Brick {
+    position: absolute;
+    margin-left: 50vi;
+    height: 30vi;
+}
 
 .IntroDown {
     display: grid;
@@ -97,16 +110,16 @@ canvas {
 .Gradient {
     width: 100%;
     height: 10vi;
-    background: linear-gradient(180deg, #141414 10%, rgb(0, 0, 0) 100%);
+    background: linear-gradient(180deg, #141414 10%, #0f0f0f 100%);
 }
 
 .Basement {
     display: grid;
     grid-template-columns: 5% 20% 50% 20% 5%;
     grid-template-rows: repeat(7, 1fr);
-    background-color: #000000;
+    background-color: #0f0f0f;
     width: 100%;
-    height: 60vi;
+    height: 80vi;
     grid-template-areas:
     ". A . . ."
     ". . . B ."
@@ -175,22 +188,189 @@ canvas {
     cursor: pointer;
 }
 
-.End {
-    width: 100%;
-    height: 10vi;
-    background-color: #6E2415;
-}
-
 .PanelWindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #00000080;
-    opacity: 0;
-    visibility: hidden;
     transition: 300ms ease;
+    visibility: hidden;
 }
 
 .PanelWindow.visible {
-    opacity: 0;
+    visibility: visible;
+}
+
+.WallGIF {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.PanelBase {
+    height: 20vi;
+    width: 60vi;
+    scale: 0;
+    transition: 500ms ease;
+}
+
+.PanelBase.visible {
+    overflow: visible;
+    scale: 1;
+}
+
+.PanelVoice {
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
+    grid-template-rows: 15% 70% 15%;
+    margin-bottom: 2%;
+    height: 20%;
+    background-color: #161616;
+    border: solid #6E2415;
+    border-radius: 5vi;
+    grid-template-areas:
+    ". . ."
+    ". A ."
+    ". . .";
+}
+
+.Character {
+    width: 10vi;
+    image-rendering: pixelated;
+    position: absolute;
+    z-index: 1;
+    margin-right: 46vi;
+    margin-bottom: 22vi;  
+    overflow: hidden;
+    transition: 500ms ease;
+    scale: 0;
+}
+
+.Character.visible {
+    scale: 1;
+    overflow: visible;
+}
+
+.ControlVoice {
+    background-color: #101010;
+    border: solid 0.1vi #242424;
+    border-radius: 5vi;
+    grid-area: A;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.PlayPause {
+    width: 3vi;
+    transition: 500ms ease;
+}
+
+.PlayPause:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.SoundInput {
+    width: 25vi;
+    height: 1vi;
+    accent-color: #6E2415;
+}
+
+.SoundInput:hover {
+    cursor: grab;
+}
+
+.SoundVolume {
+    width: 5vi;
+    height: 1vi;
+    accent-color: #6E2415;
+}
+
+.SoundVolume:hover {
+    cursor: grab;
+}
+
+.PanelText {
+    background-color: #161616;
+    height: 70%;
+    border: solid #6E2415;
+    border-radius: 5vi;
+}
+
+.Text {
+    font-size: 1.5vi;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+}
+
+.ArrowLeft {
+    scale: 0;
+    transition: 1000ms ease;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 5vi;
+    margin-right: 65vi;
+    border: 2vi solid transparent;
+    border-right: 2vi solid #6E2415;
+    border-radius: 10vi;
+}
+
+.ArrowLeft.visible {
+    scale: 1;
+    overflow: visible;
+}
+
+.ArrowLeft:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.ArrowRight {
+    scale: 0;
+    transition: 1000ms ease;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 5vi;
+    margin-left: 65vi;
+    border: 2vi solid transparent;
+    border-left: 2vi solid #6E2415;
+    border-radius: 10vi;
+}
+
+.ArrowRight.visible {
+    scale: 1;
+    overflow: visible;
+}
+
+.ArrowRight:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.Close {
+    position: absolute;
+    margin-left: 96vi;
+    margin-bottom: 48vi;
+    font-size: 2vi;
+    transition: 300ms ease;
+    visibility: hidden;
+    scale: 0;
+}
+
+.Close.visible {
+    scale: 1;
+    visibility: visible;
+}
+
+.Close:hover {
+    cursor: pointer;
+    scale: 1.1;
+    color: #6E2415;
 }

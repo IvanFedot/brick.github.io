@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon.png?" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
-    <script src="./js/title_random.js"></script>
+    <script src="./js/titleRandom.js"></script>
     <script src="./js/box.js"></script>
     <title>Конкурсный-сайт</title>
 </head>
@@ -14,14 +14,14 @@
         <j class="Contest">
             Конкурс <br> мультимедийных <br> проектов <br> "Моя профессия"
         </j>
-        <canvas #canvas id="canvas"></canvas>
+        <img class="Brick" src="./material/Brick.gif" />
     </div>
     <div class="IntroDown">
         <a class="Theme">
             Моя будущая профессия
         </a>
         <f class="Teacher">
-            Руководитель: Боряк Янна Андреевна
+            Руководитель: Кабенкина Елена Владимировна
         </f>
         <c class="Author">
             Автор: Токмаков Илья Алексеевич
@@ -42,10 +42,10 @@
             3. Моушн-Дизайнер
         </div>
         <div class="Box" id="FourBlock">
-            4. 3Д Дизайнер
+            4. 3Д дизайнер
         </div>
         <div class="Box" id="FiveBlock">
-            5. ГеймДизайнер
+            5. Геймдизайнер
         </div>
         <div class="Box" id="SixBlock">
             6. Архитектор-дизайнер
@@ -54,15 +54,29 @@
             7. Спасибо всем!
         </div>
     </div>
-    <div class="End">
-        f
-    </div>
-    <div class="PanelWindow">
-        <div class="PanelBase"> 
-            <text id="Text">
+    <div class="PanelWindow" id="PanelWindow">
+        <img src="./material/WallClose.gif" class="WallGIF" id="WallGIF"/>
+        <div class="ArrowLeft" id="ArrowLeft"></div>
+        <img class="Character" id="Character" src="./material/Idle.gif"/>
+        <div class="PanelBase" id="PanelBase">
+            <div class="PanelVoice">
+                <div class="ControlVoice">
+                    <img class="PlayPause" id="PlayPause" src="./material/Play.gif"/>
+                    <input class="SoundInput" id="SoundInput" type="range" step="1" />
+                    <input class="SoundVolume" id="SoundVolume" type="range" step="0.1" max="1" />
+                </div>
+            </div>
+            <div class="PanelText" id="PanelText">
+                <div class="Text" id="Text">
+                    fff
+                </div>
+                <div class="Text" id="Text">
 
-            </text>
+                </div>
+            </div>
         </div>
+        <div class="ArrowRight" id="ArrowRight"></div>
+        <h1 class="Close" id="Close">X</h1>
     </div>
     <script type="importmap">
         {
@@ -71,7 +85,8 @@
           }
         }
     </script>
+    <script src="./js/howler.js"></script>
     <script src="./js/textStory.js"></script> 
-    <script type="module" src="./js/3D_model.js"></script>
+    <script type="module" src="./js/3DModel.js"></script>
 </body>
 </html>
