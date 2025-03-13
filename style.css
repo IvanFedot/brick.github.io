@@ -264,34 +264,13 @@ body.scroll {
     justify-content: space-evenly;
 }
 
-.PlayPause {
-    width: 3vi;
-    transition: 500ms ease;
+audio {
+    width: 50vi;
+    height: 100%;
 }
 
-.PlayPause:hover {
-    scale: 1.1;
-    cursor: pointer;
-}
-
-.SoundInput {
-    width: 25vi;
-    height: 1vi;
-    accent-color: #6E2415;
-}
-
-.SoundInput:hover {
-    cursor: grab;
-}
-
-.SoundVolume {
-    width: 5vi;
-    height: 1vi;
-    accent-color: #6E2415;
-}
-
-.SoundVolume:hover {
-    cursor: grab;
+audio::-webkit-media-controls-panel {
+    background-color: #6E2415;
 }
 
 .PanelText {

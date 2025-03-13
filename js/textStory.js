@@ -9,41 +9,10 @@ const arrowRight = document.getElementById("ArrowRight");
 const character = document.getElementById("Character");
 const close = document.getElementById("Close");
 const wallGif = document.getElementById("WallGIF");
-const soundInput = document.getElementById("SoundInput");
-const playPause = document.getElementById("PlayPause");
-const soundVolume = document.getElementById("SoundVolume");
+const audioVoice = document.getElementById("AudioVoice")
 
 let panelType = 0;
 let textPart = 0;
-let soundStatus = "pause";
-
-const voice0  = new Howl({
-    src: ["/material/sound0.mp3"]
-})
-
-const voice1  = new Howl({
-    src: ["/material/sound1.mp3"]
-})
-
-const voice2 = new Howl({
-    src: ["/material/sound2.mp3"]
-})
-
-const voice3 = new Howl({
-    src: ["/material/sound3.mp3"]
-})
-
-const voice4 = new Howl({
-    src: ["/material/sound4.mp3"]
-})
-
-const voice5 = new Howl({
-    src: ["/material/sound5.mp3"]
-})
-
-const voice6 = new Howl({
-    src: ["/material/sound6.mp3"]
-})
 
 const textType0 = [
     "Здравствуйте! Сегодня мы рассмотрим мою будущую профессию, которая имеет много направленностей и возможностей. Сейчас я говорю про дизайнера.",
@@ -102,6 +71,7 @@ for(let i = 0; i < 7; i++) {
         html.classList.toggle("scroll")
         panelWindow.classList.add("visible")
         wallGif.src = "./material/WallClose.gif" 
+        soundAudio()
         setTimeout(() => {
             panelBase.classList.add("visible")
             arrowLeft.classList.add("visible")
@@ -112,63 +82,44 @@ for(let i = 0; i < 7; i++) {
                 case 0:
                     panelType = 0
                     text.innerHTML = textType0[0]
-                    soundInput.setAttribute("max", Math.round(voice0.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice0.seek()
-                    }, 100)
                     break
                 case 1:
                     panelType = 1
                     text.innerHTML = textType1[0]
-                    soundInput.setAttribute("max", Math.round(voice1.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice1.seek()
-                    }, 100)
                     break
                 case 2:
                     panelType = 2
                     text.innerHTML = textType2[0]
-                    soundInput.setAttribute("max", Math.round(voice2.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice2.seek()
-                    }, 100)
                     break
                 case 3:
                     panelType = 3
                     text.innerHTML = textType3[0]
-                    soundInput.setAttribute("max", Math.round(voice3.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice3.seek()
-                    }, 100)
                     break
                 case 4:
                     panelType = 4
                     text.innerHTML = textType4[0]
-                    soundInput.setAttribute("max", Math.round(voice4.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice4.seek()
-                    }, 100)
                     break
                 case 5:
                     panelType = 5
                     text.innerHTML = textType5[0]
-                    soundInput.setAttribute("max", Math.round(voice5.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice5.seek()
-                    }, 100)
                     break
                 case 6:
                     panelType = 6
                     text.innerHTML = textType6[0]
-                    soundInput.setAttribute("max", Math.round(voice6.duration()))
-                    setInterval(() => {
-                        soundInput.value = voice6.seek()
-                    }, 100)
                     break
             }
         }, 2000);
     };
 };
+
+const soundAudio = () => {
+    audioVoice.src = `./material/sound${panelType}.mp3`
+}
+
+const hi = setInterval(() => {
+    !audioVoice.paused ? character.src = "./material/Talk.gif" : character.src = "./material/Idle.gif"
+    console.log(123)
+}, 1000)
 
 const updateText = () => {
     switch(panelType) {
@@ -210,81 +161,11 @@ arrowRight.onclick = () => {
     }
 }
 
-playPause.onclick = () => {
-    if(soundStatus == "pause") {
-        soundStatus = "play"
-        playPause.src = "./material/Pause.gif"
-        character.src = "./material/Talk.gif"
-        switch(panelType) {
-            case 0:
-                voice0.play()
-                break
-            case 1:
-                voice1.play()
-                break
-            case 2:
-                voice2.play()
-                break
-            case 3:
-                voice3.play()
-                break
-            case 4:
-                voice4.play()
-                break
-            case 5:
-                voice5.play()
-                break
-            case 6:
-                voice6.play()
-                break
-        }
-    } else if(soundStatus == "play") {
-        soundStatus = "pause"
-        playPause.src = "./material/Play.gif"
-        character.src = "./material/Idle.gif"
-        switch(panelType) {
-            case 0:
-                voice0.pause()
-                break
-            case 1:
-                voice1.pause()
-                break
-            case 2:
-                voice2.pause()
-                break
-            case 3:
-                voice3.pause()
-                break
-            case 4:
-                voice4.pause()
-                break
-            case 5:
-                voice5.pause()
-                break
-            case 6:
-                voice6.pause()
-                break
-        }
-    }
-}
-
-soundVolume.oninput = () => {
-    Howler.volume(soundVolume.value)
-}
-
 close.onclick = () => {
-    clearInterval()
-    voice0.stop()
-    voice1.stop()
-    voice2.stop()
-    voice3.stop()
-    voice4.stop()
-    voice5.stop()
-    voice6.stop()
     character.src = "./material/Idle.gif"
-    playPause.src = "./material/Play.gif"
     textPart = 0
     soundStatus = "pause"
+    audioVoice.pause()
     panelBase.classList.remove("visible")
     arrowLeft.classList.remove("visible")
     arrowRight.classList.remove("visible")
