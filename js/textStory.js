@@ -118,7 +118,6 @@ const soundAudio = () => {
 
 const hi = setInterval(() => {
     !audioVoice.paused ? character.src = "./material/Talk.gif" : character.src = "./material/Idle.gif"
-    console.log(123)
 }, 1000)
 
 const updateText = () => {
